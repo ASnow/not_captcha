@@ -1,16 +1,12 @@
 module NotCaptcha
   module HTML
-    def self.generate_captcha
-      time = 1
-      size = '$this->notcaptcha_init['size']'
-      anglescnt = '$this->notcaptcha_init['anglescnt']'
+    def self.generate_captcha hashes, time, size, anglescnt
       angl2 = (anglescnt-1)*10
-      notcaptcha_url
-      hash1, hash2, hash3 = 0,0,0
+      notcaptcha_url = 'not_captcha'
       images = [
-        {name: :imgone, hash: 1, num: 1},
-        {name: :imgtwo, hash: 2, num: 2},
-        {name: :imgthree, hash: 3, num: 3}
+        {name: :imgone, hash: hashes[0], num: 1},
+        {name: :imgtwo, hash: hashes[1], num: 2},
+        {name: :imgthree, hash: hashes[2], num: 3}
       ]
 
       options = [1..anglescnt].map{|i| "<option value=#{(i-1)}>#{i}</option>" }.join
@@ -71,7 +67,7 @@ table.trackbar .c {font-size:1px; width:100%;}
 
     for(var imdx in image_list){
       document.getElementById(image_list[imdx].name + "Pict").src = blank;
-      var new_url = "#{$notcaptcha_url}/"+image_list[imdx].hash+"?t=#{time}" + Math.floor(Math.random() * 1000);
+      var new_url = "#{notcaptcha_url}/"+image_list[imdx].hash+"?t=#{time}" + Math.floor(Math.random() * 1000);
       document.getElementById(image_list[imdx].name + "Pict").src = new_url;
     }
   }
@@ -95,7 +91,7 @@ table.trackbar .c {font-size:1px; width:100%;}
   for(var imdx in image_list){
     var img_name = image_list[imdx].name;
     document.write('<div class="captchablock">');
-    document.write('<div id="'+img_name+'Unit" class="imgunit"><img id="'+img_name+'Pict" src="#{$notcaptcha_url}/'+hash+'?t=#{time}" onclick = "setCaptchaValueMobile(\''+img_name+'\')" /></div>');
+    document.write('<div id="'+img_name+'Unit" class="imgunit"><img id="'+img_name+'Pict" src="#{notcaptcha_url}/'+hash+'?t=#{time}" onclick = "setCaptchaValueMobile(\''+img_name+'\')" /></div>');
     document.write('<input type="hidden" id="'+img_name+'Field" name="'+img_name+'Field" value="0" />');
     //<![CDATA[
     trackbar.getObject(img_name).init({

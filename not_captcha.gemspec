@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'not_captcha'
-  s.version     = '0.1.1'
+  s.version     = '0.1.2'
   s.date        = '2012-09-16'
   s.platform    = Gem::Platform::RUBY
   s.required_ruby_version     = '>= 1.9.3'

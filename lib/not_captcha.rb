@@ -1,3 +1,7 @@
+require 'not_captcha/image'
+require 'not_captcha/html'
+require 'not_captcha/cypher'
+
 module NotCaptcha
   
   def self.generate
@@ -8,7 +12,8 @@ module NotCaptcha
 
     hash = NotCaptcha::Cypher.encrypt composite_name, time
 
-    NotCaptcha::HTML.generate_captcha hash, time
+    #TODO: do it right
+    NotCaptcha::HTML.generate_captcha [hash,hash,hash], time, 75, 1
   end
   
   def self.check params

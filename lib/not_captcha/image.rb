@@ -3,6 +3,7 @@ module NotCaptcha
     def self.get_random_image_path
       images[Random.rand(0...images.size)]
     end
+
     def self.get_composite_name image, answer
       original_name = File.basename(image, File.extname(image))
       original_image = Image.new(image)
@@ -16,7 +17,7 @@ module NotCaptcha
           deg = i < answer ? 360-(answer-i)*45 : (i-answer)*45
           rotated_image = original_image.rotate(deg)
           composite_image.composite(i*width, 0, 0, 0, rotated_image)
-        do
+        end
         composite_image.write composite_path composite_name
       end
 
