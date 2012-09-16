@@ -9,6 +9,6 @@ Gem::Specification.new do |s|
   s.description = "Port of http://notcaptcha.webjema.com/?p=1"
   s.authors     = ["Andrew Bolshov"]
   s.email       = 'asnow.dev@gmail.com'
-  s.files       = ["lib/not_captcha.rb"]
+  s.files       = Dir['[A-Z]*', '{app,config,lib,images}/**/*']
   s.homepage    = 'http://github.org/asnow/not_captcha'
 end
