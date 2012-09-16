@@ -2,6 +2,9 @@ Gem::Specification.new do |s|
   s.name        = 'NotCaptcha'
   s.version     = '0.0.1'
   s.date        = '2012-09-16'
+  s.platform    = Gem::Platform::RUBY
+  s.required_ruby_version     = '>= 1.9.3'
+  s.required_rubygems_version = ">= 1.8.11"
   s.summary     = "Captcha"
   s.description = "Port of http://notcaptcha.webjema.com/?p=1"
   s.authors     = ["Andrew Bolshov"]
