@@ -84,7 +84,7 @@ module NotCaptcha
     end
 
     def self.answer_for image_name
-      image.split('_')[-1]
+      image_name.split('_')[-1]
     end
 
     def self.composite_path image_name
