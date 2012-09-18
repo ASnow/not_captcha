@@ -8,12 +8,12 @@ module NotCaptcha
     time = Time.now.to_i
     answer = Random.rand(0..7) # deg: 0, 45, 90, 135, 180, 225, 270, 315
     original_path = NotCaptcha::Image.get_random_image_path
-    composite_name = NotCaptcha::Image.get_composite_name original_path, answer
+    composite_image = NotCaptcha::Image.get_composite_image original_path, answer
 
-    hash = NotCaptcha::Cypher.encrypt composite_name, time
+    hash = NotCaptcha::Cypher.encrypt composite_image.name, time
 
     #TODO: do it right
-    NotCaptcha::HTML.generate_captcha [hash,hash,hash], time, 75, 1
+    NotCaptcha::HTML.generate_captcha [hash,hash,hash], time, composite_image.width
   end
   
   def self.check params

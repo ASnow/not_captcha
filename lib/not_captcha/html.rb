@@ -1,6 +1,6 @@
 module NotCaptcha
   module HTML
-    def self.generate_captcha hashes, time, size, anglescnt
+    def self.generate_captcha hashes, time, size, anglescnt=8
       angl2 = (anglescnt-1)*10
       notcaptcha_url = 'not_captcha'
       images = [
@@ -9,7 +9,7 @@ module NotCaptcha
         {name: :imgthree, hash: hashes[2], num: 3}
       ]
 
-      options = [1..anglescnt].map{|i| "<option value=#{(i-1)}>#{i}</option>" }.join
+      options = [1..(anglescnt+1)].map{|i| "<option value=#{(i-1)}>#{i}</option>" }.join
 %@
 <!-- NotCaptcha HEAD start -->
 <script type="text/javascript" src="/assets/not_captcha/trackbar.js"></script>
