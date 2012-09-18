@@ -2,7 +2,7 @@ module NotCaptcha
   module HTML
     def self.generate_captcha hashes, time, size, anglescnt=8
       angl2 = (anglescnt-1)*10
-      notcaptcha_url = 'not_captcha'
+      notcaptcha_url = '/not_captcha'
       images = [
         {name: :imgone, hash: hashes[0], num: 1},
         {name: :imgtwo, hash: hashes[1], num: 2},
@@ -89,14 +89,13 @@ table.trackbar .c {font-size:1px; width:100%;}
   var image_list = #{images.to_json};
 
   for(var imdx in image_list){
-    var img_name = image_list[imdx].name;
     document.write('<div class="captchablock">');
-    document.write('<div id="'+img_name+'Unit" class="imgunit"><img id="'+img_name+'Pict" src="#{notcaptcha_url}/'+hash+'?t=#{time}" onclick = "setCaptchaValueMobile(\''+img_name+'\')" /></div>');
-    document.write('<input type="hidden" id="'+img_name+'Field" name="'+img_name+'Field" value="0" />');
+    document.write('<div id="'+image_list[imdx].name+'Unit" class="imgunit"><img id="'+image_list[imdx].name+'Pict" src="#{notcaptcha_url}/'+image_list[imdx].hash+'?t=#{time}" onclick = "setCaptchaValueMobile(\\''+image_list[imdx].name+'\\')" /></div>');
+    document.write('<input type="hidden" id="'+image_list[imdx].name+'Field" name="'+image_list[imdx].name+'Field" value="0" />');
     //<![CDATA[
-    trackbar.getObject(img_name).init({
+    trackbar.getObject(image_list[imdx].name).init({
       onMove : function() {
-        setCaptchaValue(img_name, this.leftValue);
+        setCaptchaValue(this.id, this.leftValue);
       },
       dual : false, // two intervals
       width : #{angl2}, // px
@@ -109,9 +108,11 @@ table.trackbar .c {font-size:1px; width:100%;}
       clearValues: 1 });
     // -->
     document.write('</div>');
+    document.write('<input type="hidden" name="hashes['+imdx+']" value="'+image_list[imdx].hash+'" />');
   }
 
 
+  document.write('<input type="hidden" name="time" value="#{time}" />');
   document.write('</div>');
   document.write('<div style="clear:both"><small>#{I18n.t('not_captcha.move_sliders_or_click')}</small><br />');
   document.write('<small><b style="cursor:pointer; padding:2px; border-bottom: 1px dashed" onclick="refresh_security_image()">#{I18n.t('not_captcha.reload_images')}</b></small></div>');

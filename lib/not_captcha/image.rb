@@ -67,6 +67,10 @@ module NotCaptcha
       NotCaptcha::Image.composite_path name
     end
 
+    def hash time
+      NotCaptcha::Cypher.encrypt name, time
+    end
+
 
     def self.get_random_image_path
       NotCaptcha::Image.images[Random.rand(0...NotCaptcha::Image.images.size)]
