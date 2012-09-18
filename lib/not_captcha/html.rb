@@ -9,7 +9,7 @@ module NotCaptcha
         {name: :imgthree, hash: hashes[2], num: 3}
       ]
 
-      options = [1..(anglescnt+1)].map{|i| "<option value=#{(i-1)}>#{i}</option>" }.join
+      options = (1..anglescnt).to_a.map{|i| "<option value=#{(i-1)}>#{i}</option>" }.join
 %@
 <!-- NotCaptcha HEAD start -->
 <script type="text/javascript" src="/assets/not_captcha/trackbar.js"></script>

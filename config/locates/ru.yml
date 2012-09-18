@@ -1,0 +1,6 @@
+ru:
+  not_captcha:
+    select: выберети ответ
+    before_you_submit: Повернит
+    make_image_vertical: Поверните картинки вертикально
+    move_sliders_or_click: Двигайте слайдер или нажмите на картинку
