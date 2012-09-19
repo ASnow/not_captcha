@@ -1,6 +1,7 @@
 ru:
   not_captcha:
-    select: выберети ответ
-    before_you_submit: Повернит
-    make_image_vertical: Поверните картинки вертикально
-    move_sliders_or_click: Двигайте слайдер или нажмите на картинку
+    select: "- выбрать -"
+    before_you_submit: "Перед отправкой формы:"
+    make_image_vertical: "Выставьте эти иконки <b>вертикально</b>"
+    move_sliders_or_click: Двигайте ползунки для изменения угла картинок или просто кликайте по картинкам
+    reload_images: Обновить картинки

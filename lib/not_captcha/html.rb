@@ -52,6 +52,7 @@ table.trackbar .c {font-size:1px; width:100%;}
 <!-- NotCaptcha HEAD end -->
 
 <!-- NotCaptcha FORM start -->
+<div id="not_captcha">
 <small>#{I18n.t('not_captcha.before_you_submit')}</small><br />
 <div style="clear:both"><small>#{I18n.t('not_captcha.make_image_vertical')} <img src="/assets/not_captcha/vertical_sign.png" alt="^" border="0" /></small></div>
 <script language="javascript">
@@ -132,8 +133,9 @@ table.trackbar .c {font-size:1px; width:100%;}
   }
 </noscript>
 <img src="/assets/not_captcha/blank.gif" width="1" height="1" />
+</div>
 <!-- NotCaptcha FORM end -->
-'@
+@
     end
   end
 end
