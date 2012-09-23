@@ -169,11 +169,13 @@ trackbar.hotSearch.prototype = {
 			this.clearValues = hash.clearValues || this.clearValues;
 			this.roundUp = hash.roundUp || this.roundUp;
 			// HTML Write
+			this.leftBegunUrl = (trackbarOption && trackbarOption.leftBegunUrl) || '/assets/not_captcha/imgtrackbar/b_l.gif';
+			this.rightBegunUrl = (trackbarOption && trackbarOption.rightBegunUrl) || '/assets/not_captcha/imgtrackbar/b_r.gif';
 			var code = '<table' + (this.width ? ' style="width:'+this.width+'px;"' : '') + 'class="trackbar" onSelectStart="return false;" border="0">\
 				<tr>\
-					<td class="l"><div id="leftBlock_' + this.id + '"><span></span><span class="limit"></span><img id="leftBegun_' + this.id + '" ondragstart="return false;" src="/assets/not_captcha/imgtrackbar/b_l.gif" width="5" height="17" alt="" /></div></td>\
+					<td class="l"><div id="leftBlock_' + this.id + '"><span></span><span class="limit"></span><img id="leftBegun_' + this.id + '" ondragstart="return false;" src="'+this.leftBegunUrl+'" class="left-begun" alt="" /></div></td>\
 					<td class="c" id="centerBlock_' + this.id + '"></td>\
-					<td class="r"><div id="rightBlock_' + this.id + '"><span></span><span class="limit"></span><img id="rightBegun_' + this.id + '" ondragstart="return false;" src="/assets/not_captcha/imgtrackbar/b_r.gif" width="5" height="17" alt="" /></div></td>\
+					<td class="r"><div id="rightBlock_' + this.id + '"><span></span><span class="limit"></span><img id="rightBegun_' + this.id + '" ondragstart="return false;" src="'+this.rightBegunUrl+'" class="right-begun"" alt="" /></div></td>\
 				</tr>\
 			</table>';
 			if (node) node.innerHTML = code;

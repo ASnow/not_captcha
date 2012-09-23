@@ -27,7 +27,7 @@ module NotCaptcha
           end
           self.wide_image = wide_image.composite(image_cloned) do |c|
             c.gravity COMPOSITE_GRAVITY
-            c.geometry "+#{@width*i}+0"
+            c.geometry "+#{(@width+1)*i}+0"
           end
           image_cloned = original_image
         end
@@ -48,11 +48,11 @@ module NotCaptcha
         end
 
         @wide_image.combine_options(:convert) do |convert|
-          convert.size "#{@width*8}x#{@height}"
+          convert.size "#{@width*8+8}x#{@height}"
           convert.xc BACKGROUND
           convert.swap '0,1'
           convert.gravity COMPOSITE_GRAVITY
-          convert.geometry "+#{@width*@answer}+0"
+          convert.geometry "+#{(@width+1)*@answer}+0"
           convert.composite
         end
       end

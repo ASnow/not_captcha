@@ -48,15 +48,22 @@ table.trackbar .r div img {cursor:pointer;}
 table.trackbar .r div span {position:absolute;top:-12px; left:6px; z-index:1000; font:11px tahoma; color:#000;}
 table.trackbar .r div span.limit {position:absolute;top:-12px; left:100%; z-index:100; font:11px tahoma; color:#D0D0D0;}
 table.trackbar .c {font-size:1px; width:100%;}
+
+#not_captcha .make_vertical,
+#not_captcha .move_slider {clear:both;}
+#not_captcha .captchas {clear:both}
+#not_captcha .refresh_images {cursor:pointer; padding:2px; border-bottom: 1px dashed;}
+#not_captcha .left-begun,
+#not_captcha .right-begun {width: 5px;height: 17px;}
 </style>
 <!-- NotCaptcha HEAD end -->
 
 <!-- NotCaptcha FORM start -->
 <div id="not_captcha">
-<small>#{I18n.t('not_captcha.before_you_submit')}</small><br />
-<div style="clear:both"><small>#{I18n.t('not_captcha.make_image_vertical')} <img src="/assets/not_captcha/vertical_sign.png" alt="^" border="0" /></small></div>
+<small class="before_send">#{I18n.t('not_captcha.before_you_submit')}</small><br />
+<div class="make_vertical"><small>#{I18n.t('not_captcha.make_image_vertical')} <img src="/assets/not_captcha/vertical_sign.png" alt="^" border="0" /></small></div>
 <script language="javascript">
-  document.write('<div style="clear:both">');
+  document.write('<div class="captchas">');
   function setCaptchaValue(id, val) {
     document.getElementById(id+"Field").value = val/10;
     val = -val/10*#{size} - (val/10);
@@ -115,8 +122,8 @@ table.trackbar .c {font-size:1px; width:100%;}
 
   document.write('<input type="hidden" name="time" value="#{time}" />');
   document.write('</div>');
-  document.write('<div style="clear:both"><small>#{I18n.t('not_captcha.move_sliders_or_click')}</small><br />');
-  document.write('<small><b style="cursor:pointer; padding:2px; border-bottom: 1px dashed" onclick="refresh_security_image()">#{I18n.t('not_captcha.reload_images')}</b></small></div>');
+  document.write('<div class="move_slider">#{I18n.t('not_captcha.move_sliders_or_click')}</div>');
+  document.write('<div class="refresh_images" onclick="refresh_security_image()">#{I18n.t('not_captcha.reload_images')}</div>');
 </script>
 <noscript>
   #{
