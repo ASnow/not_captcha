@@ -12,7 +12,6 @@ module NotCaptcha
       options = (1..anglescnt).to_a.map{|i| "<option value=#{(i-1)}>#{i}</option>" }.join
 %@
 <!-- NotCaptcha HEAD start -->
-<script type="text/javascript" src="/assets/not_captcha/trackbar.js"></script>
 <style>
 #captchaImgDiv img {padding:0;margin:0;border:0;display:inline;float:none}
 #captchaImgDiv td {padding:0;margin:0;border:0}
