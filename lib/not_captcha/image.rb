@@ -4,7 +4,7 @@ module NotCaptcha
   class Image
     BACKGROUND = 'white'
     COMPOSITE_GRAVITY = 'West'
-    QUALITY = 100
+    QUALITY = '100'
 
     attr_accessor :name, :width
     
