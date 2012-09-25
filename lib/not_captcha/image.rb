@@ -4,7 +4,7 @@ module NotCaptcha
   class Image
     BACKGROUND = 'white'
     COMPOSITE_GRAVITY = 'West'
-    QUALITY = '100'
+    QUALITY = 4
 
     attr_accessor :name, :width
     
@@ -24,12 +24,12 @@ module NotCaptcha
           deg = i < @answer ? "-#{(@answer-i)*45}" : "+#{(i-@answer)*45}"
           image_cloned.combine_options do |c|
             c.rotate deg
-            c.quality QUALITY
+            # c.quality QUALITY
             c.crop "#{@width}x#{@height}+#{@rotate_offset*((i-answer)%2)}+#{@rotate_offset*((i-answer)%2)}"
           end
           self.wide_image = wide_image.composite(image_cloned) do |c|
             c.gravity COMPOSITE_GRAVITY
-            c.quality QUALITY
+            # c.quality QUALITY
             c.geometry "+#{(@width+1)*i}+0"
           end
           image_cloned = original_image
@@ -52,7 +52,7 @@ module NotCaptcha
 
         @wide_image.combine_options(:convert) do |convert|
           convert.size "#{@width*8+8}x#{@height}"
-          c.quality QUALITY
+          # c.quality QUALITY
           convert.xc BACKGROUND
           convert.swap '0,1'
           convert.gravity COMPOSITE_GRAVITY
