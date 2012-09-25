@@ -92,13 +92,13 @@ module NotCaptcha
     end
 
     def self.composite_path image_name
-      "#{Rails.root}/lib/not_captcha/rotated/#{image_name}.jpg"
+      "#{Rails.root}/lib/not_captcha/rotated/#{image_name}.png"
     end
 
     protected
 
     def self.images
-      @images ||= Dir["#{Rails.root}/lib/not_captcha/images/*.jpg"]
+      @images ||= Dir["#{Rails.root}/lib/not_captcha/images/*.png"]
     end
   end
 end
