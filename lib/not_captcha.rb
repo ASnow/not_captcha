@@ -30,5 +30,7 @@ module NotCaptcha
     composite_name = NotCaptcha::Cypher.decrypt params[:hashes]['2'], params[:time]
     return false unless NotCaptcha::Image.answer_for(composite_name)==params[:imgthreeField]
     true
+  rescue
+    false
   end  
 end
