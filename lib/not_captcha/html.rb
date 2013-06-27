@@ -74,7 +74,7 @@ table.trackbar .c {font-size:1px; width:100%;}
 
     for(var imdx in image_list){
       document.getElementById(image_list[imdx].name + "Pict").src = blank;
-      var new_url = "#{notcaptcha_url}/"+image_list[imdx].hash+"?t=#{time}" + Math.floor(Math.random() * 1000);
+      var new_url = "#{notcaptcha_url}/"+image_list[imdx].hash+"?t=#{time}&" + Math.floor(Math.random() * 1000);
       document.getElementById(image_list[imdx].name + "Pict").src = new_url;
     }
   }
@@ -97,7 +97,9 @@ table.trackbar .c {font-size:1px; width:100%;}
 
   for(var imdx in image_list){
     document.write('<div class="captchablock">');
-    document.write('<div id="'+image_list[imdx].name+'Unit" class="imgunit"><img id="'+image_list[imdx].name+'Pict" src="#{notcaptcha_url}/'+image_list[imdx].hash+'?t=#{time}" onclick = "setCaptchaValueMobile(\\''+image_list[imdx].name+'\\')" /></div>');
+    var image_url = '#{notcaptcha_url}/'+image_list[imdx].hash+'?t=#{time}',
+    image_callback = "setCaptchaValueMobile('"+image_list[imdx].name+"')";
+    document.write('<div id="'+image_list[imdx].name+'Unit" class="imgunit"><img id="'+image_list[imdx].name+'Pict" src="'+image_url+'" onclick = "'+image_callback+'" /></div>');
     document.write('<input type="hidden" id="'+image_list[imdx].name+'Field" name="'+image_list[imdx].name+'Field" value="0" />');
     //<![CDATA[
     trackbar.getObject(image_list[imdx].name).init({
